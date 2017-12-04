@@ -1,0 +1,30 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<header class="jumbotron" style="background-color:#A9F16C">
+  <div class="container">
+    <div class="row">
+        <!-- <h1>検索</h1>
+      <form>
+        <input type="text" name="keyword">
+        <input type="submit">
+      </form> -->
+    </div>
+  </div>
+</header>
+{{ .keyword }}
+<div class="container">
+  <ul>
+{{range .apiresult.Items}}
+    <li><a href="{{ .ItemUrl }}"><img src="{{index .ImageUrls 0}}">{{ .ItemName }}</a></li>
+
+{{end}}
+</ul>
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
